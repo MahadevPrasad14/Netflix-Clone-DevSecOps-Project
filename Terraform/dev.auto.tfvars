@@ -8,3 +8,4 @@ ec2-instance-count    = 4
 ec2_instance_type     = ["m7i-flex.large"]
 ec2_volume_size       = 20
 ec2_volume_type       = "gp3"
+key_name              = "US-Ubuntu-Key"
