@@ -98,7 +98,8 @@ pipeline{
             steps {
                 script {
                     dir('Kubernetes') {
-                        withKubeConfig(credentialsId: 'k8s') {
+                        withKubeConfig(credentialsId: 'k8s', variable: 'KUBECONFIG') {
+                            sh 'export KUBECONFIG=$KUBECONFIG'
                             sh 'kubectl apply -f deployment.yml'
                             sh 'kubectl apply -f service.yml'
                             sh 'kubectl get svc'
