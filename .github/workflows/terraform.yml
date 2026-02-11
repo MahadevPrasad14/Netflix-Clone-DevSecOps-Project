@@ -28,14 +28,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
+        
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
 
       - name: Setting Up the Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: "1.13.3"
+          terraform_version: "1.14.4"
           terraform_wrapper: true
-          cli_config_credentials_token: ${{ secrets. TF_API_TOKEN }}
-
+          
       - name: Cache Terraform
         uses: actions/cache@v4
         with:
